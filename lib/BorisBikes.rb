@@ -17,6 +17,7 @@ class DockingStation
   end
 
   def release_bike
+    raise "You are already docked" unless @docked_bikes.empty?
     docked_bike = Bike.new
     @docked_bikes << docked_bike
     docked_bike
