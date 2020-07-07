@@ -20,9 +20,10 @@ describe DockingStation do
     expect { DockingStation.new.docked_bikes }.to raise_error(RuntimeError)
   end
   it 'should not allow docking when station is full' do
-    t1 = DockingStation.new
-    t1.release_bike
-    expect { t1.release_bike }.to raise_error(RuntimeError)
+    expect do
+      t1 = DockingStation.new
+      (t1.capacity + 1).times { t1.release_bike }
+    end.to raise_error(RuntimeError)
   end
 
 end
