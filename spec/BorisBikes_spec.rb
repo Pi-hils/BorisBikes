@@ -6,7 +6,7 @@ describe DockingStation do
     expect(DockingStation.new).to respond_to(:release_bike)
   end
   it 'docks a bike' do
-    expect(DockingStation.new.release_bike.class).to eq(Bike)
+    expect(DockingStation.new.release_bike.class).to eq(Array)
   end
   it 'checks for a bike' do
     t1 = DockingStation.new
@@ -19,13 +19,13 @@ describe DockingStation do
   it 'should not provide bikes before releasing a bike' do
     expect { DockingStation.new.docked_bikes }.to raise_error(RuntimeError)
   end
-  it 'should not allow docking when station is full' do
+  it 'should not allow docking when station is over capacity' do
     expect do
       t1 = DockingStation.new
       (t1.capacity + 1).times { t1.release_bike }
     end.to raise_error(RuntimeError)
   end
-  it 'should not raise an error' do
+  it 'should not raise an error under capacity' do
     expect {
       t1 = DockingStation.new(30)
       (29).times { t1.release_bike }
