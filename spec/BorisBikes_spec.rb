@@ -5,6 +5,10 @@ describe DockingStation do
   it 'creates a new docking station' do
     expect(DockingStation.new).to respond_to(:release_bike)
   end
+  it 'creates a new docking station with a non-default capacity' do
+    expect(DockingStation.new(30)).to respond_to(:release_bike)
+    expect(DockingStation.new(30).capacity).to eq(30)
+  end
   it 'docks a bike' do
     expect(DockingStation.new.release_bike.class).to eq(Array)
   end
