@@ -32,6 +32,7 @@ class DockingStation
   private
 
   def exception_handler
+    return p 'Bike dock is FULL!' if @docked_bikes.length == @capacity
     raise 'You have no bikes!' if @docked_bikes.empty? || @docked_bikes.nil?
   end
 
@@ -43,8 +44,8 @@ end
 # This grants access to DockingStation class methods
 #docking_station = DockingStation.new(20)
 
-#21.times { p docking_station.release_bike } # Manual feature test
-
+#20.times { p docking_station.release_bike } # Manual feature test
+#docking_station.docked_bikes
 # With the access to DockingStation methods, I can now use release_bike and assign
 # this instance method value to new_bike. This instance creates new_bike new Bike instance
 # (object) of the Bike class. Granting access to the Bike class methods.
