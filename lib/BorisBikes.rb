@@ -23,16 +23,11 @@ class DockingStation
   end
 
   def docked_bikes
-    if @docked_bikes.empty? || @docked_bikes.nil?
-      raise "You have no bikes!"
-    end
+    raise 'You have no bikes!' if @docked_bikes.empty? || @docked_bikes.nil?
     @docked_bikes
   end
 
 end
-
-
-
 
 # Create new instance of DockingStation class called docking_station
 # This grants access to DockingStation class methods
