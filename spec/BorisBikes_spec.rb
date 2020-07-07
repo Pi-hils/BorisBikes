@@ -25,6 +25,11 @@ describe DockingStation do
       (t1.capacity + 1).times { t1.release_bike }
     end.to raise_error(RuntimeError)
   end
-
+  it 'should not raise an error' do
+    expect {
+      t1 = DockingStation.new(30)
+      (29).times { t1.release_bike }
+    }.to_not raise_error
+  end
 end
 
