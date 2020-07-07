@@ -1,7 +1,3 @@
-class Exception
-
-end
-
 class Bike
 
   def working?
@@ -12,10 +8,11 @@ end
 
 class DockingStation
   attr_reader :capacity
-  
-  def initialize(capacity = 20)
+  DEFAULT_CAPACITY = 20
+
+  def initialize
     @docked_bikes = []
-    @capacity = capacity
+    @capacity = DEFAULT_CAPACITY
   end
 
   def release_bike
@@ -50,7 +47,7 @@ end
 
 # Create new instance of DockingStation class called docking_station
 # This grants access to DockingStation class methods
-#docking_station = DockingStation.new(20)
+#docking_station = DockingStation.new
 
 #21.times { p docking_station.release_bike } # Manual feature test
 
@@ -63,7 +60,7 @@ end
 #bike.working?
 
 # This can also be done in one line. However, you only receive the end value.
-# DockingStation.new().release_bike.working? # ADD ARGUMENTS
+# DockingStation.new.release_bike.working? # ADD ARGUMENTS?
 
 # Attribute reader allows us to call the variable of an **instance** from outside the class.
 #p docking_station.docked_bikes
