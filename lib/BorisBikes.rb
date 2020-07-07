@@ -19,8 +19,7 @@ class DockingStation
   end
 
   def release_bike
-    raise 'You have reached maximum capacity' if
-        @docked_bikes.length == @capacity
+    raise 'You have reached maximum capacity' if full?
     @docked_bikes << Bike.new
   end
 
@@ -29,11 +28,20 @@ class DockingStation
     @docked_bikes
   end
 
+
+
   private
 
+  def full?
+    @docked_bikes.length >= @capacity
+  end
+
+  def empty?
+    @docked_bikes.empty?
+  end
+
   def exception_handler
-    return p 'Bike dock is FULL!' if @docked_bikes.length == @capacity
-    raise 'You have no bikes!' if @docked_bikes.empty? || @docked_bikes.nil?
+    raise 'You have no bikes!' if empty?
   end
 
 end
@@ -44,8 +52,8 @@ end
 # This grants access to DockingStation class methods
 #docking_station = DockingStation.new(20)
 
-#20.times { p docking_station.release_bike } # Manual feature test
-#docking_station.docked_bikes
+#21.times { p docking_station.release_bike } # Manual feature test
+
 # With the access to DockingStation methods, I can now use release_bike and assign
 # this instance method value to new_bike. This instance creates new_bike new Bike instance
 # (object) of the Bike class. Granting access to the Bike class methods.
