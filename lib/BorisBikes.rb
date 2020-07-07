@@ -29,6 +29,8 @@ class DockingStation
     @docked_bikes
   end
 
+  private
+
   def exception_handler
     raise 'You have no bikes!' if @docked_bikes.empty? || @docked_bikes.nil?
   end
