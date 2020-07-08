@@ -21,7 +21,7 @@ end
 
 describe DockingStation do
   it 'should not provide bikes before releasing a bike' do
-    expect { DockingStation.new.docked_bikes }.to raise_error(RuntimeError)
+    expect { DockingStation.new.bike_release }.to raise_error(RuntimeError)
   end
   it 'should not allow docking when station is over capacity' do
     expect do
@@ -37,3 +37,8 @@ describe DockingStation do
   end
 end
 
+describe DockingStation, 'Report Broken' do
+  t2 = DockingStation.new
+  t2.release_bike
+  it { expect(t2.released_bike).to be(true).or be(false) }
+end
